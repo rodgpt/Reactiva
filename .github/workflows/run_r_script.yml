@@ -32,7 +32,7 @@ jobs:
       
       - name: Install R packages
         run: |
-          Rscript -e "install.packages(c('rmarkdown', 'tidyverse', 'httr', 'dplyr', 'readxl', 'knitr', 'kableExtra', 'tidyr', 'ggplot2', 'plotly', 'readr', 'DT', 'RODBC', 'formattable', 'googledrive', 'rvest'), dependencies = TRUE)"
+          Rscript -e "install.packages(c('rmarkdown', 'tidyverse', 'httr', 'dplyr', 'readxl', 'knitr', 'kableExtra', 'tidyr', 'ggplot2', 'plotly', 'readr', 'DT', 'RODBC', 'formattable', 'googledrive', 'rvest'), repos='https://cloud.r-project.org', dependencies = TRUE)"
 
       - name: Run R script and Render HTML
         run: |
