@@ -27,6 +27,11 @@ jobs:
       - name: Install kableExtra dependencies
         run: |
           sudo apt-get install -y libfontconfig1-dev libharfbuzz-dev libfribidi-dev
+      
+      - name: Install TinyTeX
+        run: |
+          Rscript -e "install.packages('tinytex', repos='https://cloud.r-project.org')"
+          Rscript -e "tinytex::install_tinytex()"
           
       - name: Install R packages separately
         run: |
@@ -61,7 +66,7 @@ jobs:
       
       - name: Run R script and Render HTML
         run: |
-          Rscript -e "rmarkdown::render('sripts/reactiva.Rmd', output_file = '../index.html')"
+          Rscript -e "rmarkdown::render('sripts/reactiva.Rmd', output_format = 'html_document', output_file = '../index.html')"
       
       - name: List output files
         run: ls -l
