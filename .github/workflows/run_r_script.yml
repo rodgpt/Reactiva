@@ -18,11 +18,12 @@ jobs:
           r-version: '4.1.0'
       
       - name: Cache R packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ runner.tool_cache }}/R
           key: ${{ runner.os }}-r-${{ hashFiles('scripts/reactiva.Rmd') }}
           restore-keys: ${{ runner.os }}-r-
+
 
       - name: Install system dependencies
         run: |
