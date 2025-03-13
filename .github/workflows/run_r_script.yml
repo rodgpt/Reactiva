@@ -35,7 +35,7 @@ jobs:
 
       - name: Run R script and Render HTML
         run: |
-          Rscript -e "rmarkdown::render('reporte01.Rmd', output_file = 'index.html')"
+          Rscript -e "rmarkdown::render('reactiva.Rmd', output_file = 'index.html')"
 
       - name: List output files
         run: ls -l
