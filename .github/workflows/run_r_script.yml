@@ -20,6 +20,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc libcurl4-openssl-dev libssl-dev libxml2-dev
       
+      - name: Install RODBC dependencies
+        run: |
+          sudo apt-get install -y unixodbc unixodbc-dev odbc-postgresql
+      
       - name: Install kableExtra dependencies
         run: |
           sudo apt-get install -y libfontconfig1-dev libharfbuzz-dev libfribidi-dev
@@ -41,11 +45,15 @@ jobs:
           Rscript -e "install.packages('formattable', repos='https://cloud.r-project.org')"
           Rscript -e "install.packages('googledrive', repos='https://cloud.r-project.org')"
           Rscript -e "install.packages('rvest', repos='https://cloud.r-project.org')"
-          Rscript -e "install.packages('RODBC', repos='https://cloud.r-project.org')"
+          
+      - name: Install RODBC
+        run: |
+          Rscript -e "install.packages('RODBC', repos='https://cloud.r-project.org', type='source')"
           
       - name: Verify packages
         run: |
           Rscript -e "packageVersion('kableExtra')"
+          Rscript -e "packageVersion('RODBC')"
       
       - name: Check file structure
         run: |
