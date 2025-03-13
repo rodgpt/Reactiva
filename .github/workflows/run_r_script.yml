@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ runner.tool_cache }}/R
-          key: ${{ runner.os }}-r-${{ hashFiles('**/reporte01.Rmd') }}
+          key: ${{ runner.os }}-r-${{ hashFiles('scripts/reactiva.Rmd') }}
           restore-keys: ${{ runner.os }}-r-
 
       - name: Install system dependencies
@@ -35,7 +35,7 @@ jobs:
 
       - name: Run R script and Render HTML
         run: |
-          Rscript -e "rmarkdown::render('reactiva.Rmd', output_file = 'index.html')"
+          Rscript -e "rmarkdown::render('scripts/reactiva.Rmd', output_file = 'index.html')"
 
       - name: List output files
         run: ls -l
