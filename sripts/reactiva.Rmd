@@ -3,11 +3,10 @@ title: "Informe diario de riesgo"
 author: "Grupo Estrategico Macrozonal Merluza Común GEMM"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document:
     self_contained: true
     output_file: index.html
-#always_allow_html: true ### change maybe=
+  pdf_document: default
 
 ---
 <hr style="border: none; height: 3px; background-color: black;">
