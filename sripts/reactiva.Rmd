@@ -362,7 +362,7 @@ Operativos de Fiscalización
 
 ```{r tabla_gesfip01, echo=FALSE, fig.height=5, fig.width=12, message=FALSE, warning=FALSE, results='asis'}
 # Leer y mostrar la tabla resumen de cometidos por oficina
-summary_table <- read.csv("https://drive.google.com/uc?export=download&id=1GSNdrOYS2LWKu26LAgXp8AqJ2XjYbCWo")
+summary_table <- read.csv("https://drive.google.com/uc?export=download&id=1CpqcOfoJvL9blgtCc04NKxO9ZiJnSWDF")
 summary_table %>%
   kable("html", caption = "Tabla Resumen de Cometidos por Oficina") %>%
   kable_styling(full_width = FALSE, position = "left")
