@@ -3,10 +3,11 @@ title: "Informe diario de riesgo"
 author: "Grupo Estrategico Macrozonal Merluza Común GEMM"
 date: "`r Sys.Date()`"
 output:
+  #pdf_document: default
   html_document:
     self_contained: true
     output_file: index.html
-  pdf_document: default
+    always_allow_html: true ### change maybe=
 
 ---
 <hr style="border: none; height: 3px; background-color: black;">
@@ -111,10 +112,11 @@ temp_file_ZARPE <- tempfile(fileext = ".xlsx")
 download.file(excel_zARPE_url, temp_file_ZARPE, mode = "wb")
 datos_zarpe <- read_excel(temp_file_ZARPE)
 unlink(temp_file_ZARPE)
-datos_zarpe$FECHA = as.Date(as.numeric(datos_zarpe$FECHA), origin = "1899-12-30")
+numeric_dates <- as.numeric(sub("\\.0$", "", datos_zarpe$FECHA))
+datos_zarpe$FECHA <- as.Date(numeric_dates, origin = "1899-12-30")
 
 # Identificar y filtrar por la última fecha en zarpes
-ultima_fecha_zarpe <- max(datos_zarpe$FECHA)
+ultima_fecha_zarpe <- max(datos_zarpe$FECHA, na.rm = TRUE)
 datos_zarpe_ultima_fecha <- datos_zarpe %>%
   filter(FECHA == ultima_fecha_zarpe)
 
@@ -196,6 +198,8 @@ merluza_comun_datos_precios <- datos_precios_30_dias %>%
   group_by(FECHA) %>%
   summarise(Precio_Promedio = mean(PRECIO_CAJA, na.rm = TRUE)) %>%
   ungroup()
+
+
 ```
 
 <hr style="border: none; height: 3px; background-color: black;">
